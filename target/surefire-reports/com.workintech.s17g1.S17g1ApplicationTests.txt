@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.workintech.s17g1.S17g1ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.230 s -- in com.workintech.s17g1.S17g1ApplicationTests

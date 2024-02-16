@@ -1,6 +1,7 @@
 package com.workintech.s17g1.controller;
 
 import com.workintech.s17g1.entity.Animal;
+import com.workintech.s17g1.utils.ValidationUtils;
 import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,7 @@ public class AnimalController {
     @GetMapping(path = "/{id}")
     public Animal get(@PathVariable("id") Integer id){
         System.out.println("--- get by id triggered ---");
+        ValidationUtils.checkId(id);
         return animals.get(id);
     }
 
@@ -39,6 +41,7 @@ public class AnimalController {
 
     @PostMapping
     public void addAnimal(@RequestBody Animal animal){
+        ValidationUtils.checkAnimal(animal);
         this.animals.put(animal.getId(),animal);
     }
 
@@ -46,6 +49,8 @@ public class AnimalController {
 
     @PutMapping(path = "/{id}")
     public Animal updateAnimal(@PathVariable("id") Integer existingRecordId, @RequestBody Animal newAnimal){
+        ValidationUtils.checkId(existingRecordId);
+        ValidationUtils.checkAnimal(newAnimal);
         this.animals.replace(existingRecordId, newAnimal);
         return this.animals.get(existingRecordId);
     }
